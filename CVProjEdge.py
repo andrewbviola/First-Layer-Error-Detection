@@ -43,7 +43,7 @@ for row in range(photo_crop.shape[0]):
             binaryimg1[row][col] = 255
         else:
             binaryimg1[row][col] = 0
-        if mask_crop[row][col] > 120:    
+        if mask_crop[row][col] > 120:
             binaryimg2[row][col] = 255
         else:
             binaryimg2[row][col] = 0
@@ -90,7 +90,7 @@ for row in range(photo_crop.shape[0]):
 skimage.io.imshow(masked_photo, cmap='gray')
 skimage.io.show()
 
-# take fourier transform of this photo 
+# take fourier transform of this photo
 
 fourier_image = scipy.fft.fftshift(scipy.fft.fft2(masked_photo))
 #print(np.asarray(fourier_image).shape)
@@ -124,4 +124,3 @@ print(f"Fourier maximum is at: ({max_index[1]}, {max_index[0]}) and is value {re
 # Solve for wavelength which is 1/sqrt(u^2 + v^2)
 wavelength = 1/np.sqrt(pow(max_index[0], 2) + pow(max_index[1], 2))
 print(f"Wavelength is: {wavelength}")
-

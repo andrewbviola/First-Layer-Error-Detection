@@ -4,7 +4,9 @@ from skewCorrection import skewCorrection
 
 def main():
     currentCamera()
+    print("Camera grabbed")
     currentLayer()
+    print("Layer grabbed")
     skewCorrection()
 
 if __name__ == '__main__':

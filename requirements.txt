@@ -1,5 +1,8 @@
 matplotlib
 numpy
 opencv-python
-selenium
+pandas
 requests
+selenium
+scikit-image
+tabulate
