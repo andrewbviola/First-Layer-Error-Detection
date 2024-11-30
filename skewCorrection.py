@@ -7,10 +7,10 @@ def skewCorrection():
     layerImg = cv2.imread("./Pictures/layer.png")
 
     cameraPoints = np.array([
-        [693,1072],
-        [1633,1077],
-        [1619,144],
-        [714,129]
+        [692,1075],
+        [1631,1077],
+        [1615,150],
+        [712,133]
     ], dtype='float32')
 
     layerPoints = np.array([

@@ -1,8 +1,6 @@
 import numpy as np
 import cv2
 import skimage
-from tabulate import tabulate
-import scipy.fft
 import matplotlib.pyplot as plt
 
 
@@ -18,7 +16,7 @@ def imageGradients(imageName, layerName):
 
     photo_crop = photo[:, 119:997]
     mask_crop = mask[:, 119:997]
-    #
+
     # skimage.io.imshow(photo_crop, cmap='gray')
     # skimage.io.show()
 

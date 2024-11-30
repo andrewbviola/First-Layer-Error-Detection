@@ -1,22 +1,26 @@
-from ultralytics import YOLO
-import cv2
-from PIL import Image
+from tabnanny import check
 
 from ultralytics import YOLO
+import time
+import requests
 
-model = YOLO("./runs/detect/train14/weights/best.pt")
-# accepts all formats - image/dir/Path/URL/video/PIL/ndarray. 0 for webcam
-results = model.predict(source="./cv_photos/real.png", show=True)
-# results = model.predict(source="folder", show=True)  # Display preds. Accepts all YOLO predict arguments
-results[0].show()
+# model = YOLO("best.pt")
+# # accepts all formats - image/dir/Path/URL/video/PIL/ndarray. 0 for webcam
+# results = model.predict(source="./Results/spaghetti.jpg", show=False)
+# # results = model.predict(source="folder", show=True)  # Display preds. Accepts all YOLO predict arguments
+# for result in results:
+#     for box in result.boxes:  # Iterate through all detected boxes
+#         conf = box.conf[0]  # Confidence score
+#         print(f"Confidence: {conf}")
 
-# from PIL
-# im1 = Image.open("bus.jpg")
-# results = model.predict(source=im1, save=True)  # save plotted images
 
-# # from ndarray
-# im2 = cv2.imread("bus.jpg")
-# results = model.predict(source=im2, save=True, save_txt=True)  # save predictions as labels
+def checkSpaghetti(img,pathModel):
+    model = YOLO(pathModel)
+    results = model.predict(img)
+    for result in results:
+        for box in result.boxes:  # Iterate through all detected boxes
+            if box.conf[0] > .75:
+                return True
+    return False
 
-# # from list of PIL/ndarray
-# results = model.predict(source=[im1, im2])
+checkSpaghetti("./Results/spaghetti.jpg","best.pt")
