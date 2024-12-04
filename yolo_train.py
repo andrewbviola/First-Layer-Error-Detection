@@ -12,16 +12,18 @@ def run():
     # Train the model
     train_results = model.train(
         data="C:/Users/maxwe/Documents/datasets/yolo_data/data.yaml",  # path to dataset YAML
-        epochs=150,  # number of training epochs
+        epochs=75,  # number of training epochs
         imgsz=640,  # training image size
         device=0,  # device to run on, i.e. device=0 or device=0,1,2,3 or device=cpu
-        optimizer="Adam",    # using better optimizer
+        optimizer="auto",    # using better optimizer
         batch=-1,            # auto optimize batch size for GPU
-        name="NewYOLO",      # new name
-        lr0=1e-3,            # setting optimalstarting learning rate
-        lrf=0.02,            # setting better final learning rate ration
+        name="NewerYOLO",    # new name
+        lr0=5e-3,            # setting optimalstarting learning rate
+        lrf=0.01,            # setting better final learning rate ratio
         weight_decay=0.0005, # default weight decay 
-        single_cls=True      # we only want binary classification and focus on presence of spaghetti
+        single_cls=True,     # we only want binary classification and focus on presence of spaghetti
+        warmup_epochs=3,     # warmup the testing to smoothen training process
+        deterministic=False  # introduce some randomness
     )
 
     # Evaluate model performance on the validation set
