@@ -4,14 +4,14 @@ import skimage
 import matplotlib.pyplot as plt
 
 
-def imageGradients(imageName, layerName):
-    photoName = imageName
-    layer = layerName
+def imageGradients(imagePath, layerPath):
+    photoName = imagePath
+    layer = layerPath
 
-    photo = np.array(skimage.io.imread(f'./Results/{photoName}'))
+    photo = np.array(skimage.io.imread(f'{photoName}'))
     photo = np.mean(photo, axis=2)
 
-    mask = np.array(skimage.io.imread(f'./Pictures/{layer}'))
+    mask = np.array(skimage.io.imread(f'{layer}'))
     mask = np.mean(mask, axis=2)
 
     photo_crop = photo[:, 119:997]

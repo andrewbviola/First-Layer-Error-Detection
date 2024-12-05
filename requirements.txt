@@ -7,3 +7,5 @@ selenium
 scikit-image
 tabulate
 ultralytics
+sys
+os

@@ -2,14 +2,14 @@ import numpy as np
 import cv2
 import skimage
 
-def missingObject(imageName, layerName):
-    photoName = imageName
-    layer = layerName
+def missingObject(imagePath, layerPath):
+    photoName = imagePath
+    layer = layerPath
 
-    photo = np.array(skimage.io.imread(f'./Results/{photoName}'))
+    photo = np.array(skimage.io.imread(f'{photoName}'))
     photo = np.mean(photo, axis=2)
 
-    mask = np.array(skimage.io.imread(f'./Pictures/{layer}'))
+    mask = np.array(skimage.io.imread(f'{layer}'))
     mask = np.mean(mask, axis=2)
 
     photo_crop = photo[20:870, 125:997]

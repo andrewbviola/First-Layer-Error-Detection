@@ -1,10 +1,10 @@
 import cv2
 import numpy as np
 
-def skewCorrection():
+def skewCorrection(cameraImgPath, layerImgPath):
 
-    cameraImg = cv2.imread("./Pictures/photo.jpg")
-    layerImg = cv2.imread("./Pictures/layer.png")
+    cameraImg = cv2.imread(cameraImgPath)
+    layerImg = cv2.imread(layerImgPath)
 
     cameraPoints = np.array([
         [692,1075],
@@ -30,7 +30,7 @@ def skewCorrection():
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
-    cv2.imwrite(f"./Results/skewCorrection.png",newImg)
+    cv2.imwrite(f"./Demo/skewCorrection.png",newImg)
 
     cv2.imshow("Overlap",blend)
     cv2.waitKey(0)

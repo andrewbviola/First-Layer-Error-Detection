@@ -10,7 +10,7 @@ def run():
     print(torch.cuda.is_available())
     torch.multiprocessing.freeze_support()
 
-    model = YOLO("./runs/detect/NewerYOLO/weights/last.pt")
+    model = YOLO("last.pt")
 
     value = 1 # set to 1 for personal dataset, set to 0 for test dataset
 
@@ -98,6 +98,49 @@ def run():
     accuracy = (1 - percent_error) * 100
     print(accuracy)
     print(count)
+
+# Make a function to detect spaghetti in an image
+def checkSpaghetti(img_path):
+
+    # initialize the model
+    model = YOLO("./last.pt")
+
+    # create error flag
+    error = False
+
+    # parse through all the images in the path and check for spaghetti
+    results = model.predict(img_path,
+                            imgsz=640,                          # testing image size
+                            device='cpu',                           # device to run on, i.e. device=0 or device=0,1,2,3 or device=cpu
+                            name="Test Dataset Prediction",     # names the test
+                            batch=1)                            # setting batchsize = 1
+
+    # look through all the results
+    # if any of the results has detecte spaghetti, save the image with spaghetti and display it. Also send an error signal 
+    for i in range(len(results)):
+        if len(results[i]) > 0:
+            error = True
+            fig, axes = plt.subplots(1, 2)
+            results[i].save("error.png")
+            img1 = np.array(Image.open("error.png"))
+            axes[0].imshow(img1)
+            axes[0].set_title("Mislabelled Photo")
+            axes[0].axis('off')
+
+            img2 = np.array(Image.open(results[i].path))
+
+            axes[1].imshow(img2)
+            axes[1].set_title("Original Photo")
+            axes[1].axis('off')
+
+            plt.show()
+
+    if error == False:
+        print("No spaghetti dectected. Continue printing")
+    elif error == True:
+        print("Spaghetti detected! Stop the print!")
+
+    return error
 
 if __name__ == '__main__':
     run()
