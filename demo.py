@@ -28,6 +28,8 @@ def demo():
     skewCorrection(cameraImgPath, layerImgPath)
 
     # After we get a clean image of the build plate, we will check for spaghetti with our pretrained YOLO model. To see how this was trained, see yolo_train.py
+    # May not work on your system, requires specific files in AppData/Temp folder. See report for model images if this doesn't work
+    # Uncomment below for YOLO model
     #error = checkSpaghetti("./Demo/skewCorrection.png")
 
     # if error == True:
