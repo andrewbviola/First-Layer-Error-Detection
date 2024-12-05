@@ -43,11 +43,11 @@ def imageGradients(imagePath, layerPath):
     # print(f"{imageName[:5]} edge = {round(edge_density, 5)}, mean = {round(meanGrad, 5)}, var = {round(varGrad, 5)}")
 
     if .001 < edge_density < .00361 and (0.2247 < meanGrad < 0.6 or 1 < varGrad < 2):
-        print(f"{imageName}: Ok!")
+        print(f"{photoName}: Ok!")
     elif edge_density < .0009 or (.17 < meanGrad < .62 and 2.4 < varGrad < 6.4) and not 0.0033 < edge_density < 0.0034 and edge_density < 0.0045:
-        print(f"{imageName}: Too squished!")
+        print(f"{photoName}: Too squished!")
     elif edge_density > 0.0022 and varGrad > 3 and meanGrad > 0.1:
-        print(f"{imageName}: Too high!")
+        print(f"{photoName}: Too high!")
 
     # plt.imshow(gradients)
     # plt.title(imageName)

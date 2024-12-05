@@ -28,13 +28,13 @@ def demo():
     skewCorrection(cameraImgPath, layerImgPath)
 
     # After we get a clean image of the build plate, we will check for spaghetti with our pretrained YOLO model. To see how this was trained, see yolo_train.py
-    error = checkSpaghetti("./Demo/skewCorrection.png")
+    #error = checkSpaghetti("./Demo/skewCorrection.png")
 
-    if error == True:
-        print("Halting Print...")
-        # Send signal to printer to stop via Moonraker’s API
-        # Halt code execution
-        sys.exit()
+    # if error == True:
+    #     print("Halting Print...")
+    #     # Send signal to printer to stop via Moonraker’s API
+    #     # Halt code execution
+    #     sys.exit()
         
     # Next, the two images are checked if any objects are missing
     missingObject("./Demo/skewCorrection.png", "./Demo/rectangle.png")
